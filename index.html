@@ -5,11 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <!-- EXTERNAL LIBRARIES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Handjet:wght,ELSH@100..900,2&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    
+
+    
     <style>
+
     button{
         border:none;
         font-size:20px;
         box-shadow: 0px 3px 5px rgba(168,168,168,0.3);
+        
 
 
     }
@@ -17,6 +28,7 @@
         width: 40px;
         height: 40px;
         border-radius: 50%;
+        line-height: 0;
 
 
 
@@ -42,6 +54,9 @@
         transition: box-shadow 0.2s;
         
     }
+    .done{
+        background-color: rgb(158, 253, 160);
+    }
 
     .task:hover{
         box-shadow: 0px 3px 15px rgba(97,97,97,0.843);
@@ -50,7 +65,17 @@
     
     body{
         background-color: rgb(153, 107, 196);
+        /*  font import */
+        font-family: "Handjet", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 300;
+        font-style: normal;
+        font-variation-settings:
+        "ELGR" 1,
+        "ELSH" 2;
+        /* // font import  //*/
     }
+
 
     </style>
 </head>
@@ -72,22 +97,27 @@
             <!-- HEADER-->
             <div style="width: 100%; text-align: center; background: rebeccapurple; color: white; padding-top: 8px;padding-bottom: 8px;">
                 <h1 style="display: inline;"> مهامي</h1>
-                <button class="cirular" style="float: right; background: white; margin-right:10px;">  
-                    add 
+                <button id="addNew"class="cirular" style="float: right; background: white; margin-right:10px;">  
+                    <span class="material-symbols-outlined">
+                        add
+                    </span> 
                  </button>
 
             </div>
             <!--// HEADER//-->
 
             <!-- TASKS -->
-             <div class="tasks" style="padding: 20px;">
+             <div id="tasks" style="padding: 20px;">
                 <!-- TASK -->
                  <div class="task">
                     <!--TASK INFO -->
                     <div style="width: 70%;">
-                        <h2> ww</h2>
+                        <h2 id="title"> انهاء</h2>
                         <div>
-                            <span>10/10/2004</span>
+                            <span class="material-symbols-outlined">
+                                calendar_month
+                            </span>
+                            <span id="time">10/10/2004</span>
                         </div>
 
                     </div>
@@ -95,9 +125,23 @@
 
                     <!--TASK ACTION -->
                     <div  style= "display:flex; justify-content: space-between;align-items: center; width: 20%;">
-                        <button class="cirular" style="background-color:red;color: white;">d</button>
-                        <button class="cirular" style="background-color: green;color: white;">C</button>
-                        <button class="cirular" style="background-color: chocolate;color: white;">E</button>
+                        <button class="cirular" style="background-color:red;color: white;">
+                        <span class="material-symbols-outlined">
+                            check
+                        </span>   
+                        </button>
+
+                        <button class="cirular" style="background-color: green;color: white;">
+                            <span class="material-symbols-outlined">
+                                delete
+                            </span>
+                        </button>
+
+                        <button class="cirular" style="background-color: chocolate;color: white;">
+                            <span class="material-symbols-outlined">
+                                edit
+                            </span>
+                            </button>
                         
                     </div>
                     <!--//TASK ACTION// -->
@@ -121,10 +165,208 @@
 
 
   </div>
+
+
+
+
 </body>
 
 
+
+
 <script>
+   
+
+
+
+let tasks=[
+        {
+            "title":"hhhhh",
+            "date":"15/10/2002",
+            "isDone":false
+
+
+         },
+         {
+         
+            "title":"SSSSSSS",
+            "date":"15/10/2002",
+            "isDone":false
+
+
+         },
+         {
+            "title":"hyyyyyyyyy",
+            "date":"15/10/2002",
+            "isDone":false
+
+
+         }
+
+]
+
+fillTasksOnThePage()
+
+function fillTasksOnThePage(){
+    let index=0
+    
+    document.getElementById("tasks").innerHTML=""
+    for (const x of tasks){
+
+    document.getElementById("tasks").innerHTML+=`
+   <!-- TASK -->
+                 <div class="task ${x.isDone?'done':''}">
+                    <!--TASK INFO -->
+                    <div style="width: 70%;">
+                        <h2 id="title"> ${x.title}</h2>
+                        <div>
+                            <span class="material-symbols-outlined">
+                                calendar_month
+                            </span>
+                            <span id="time">${x.date}</span>
+                        </div>
+
+                    </div>
+                    <!--//TASK INFO// -->   
+
+                    <!--TASK ACTION -->
+                    <div  style= "display:flex; justify-content: space-between;align-items: center; width: 20%;">
+                        
+                        ${x.isDone?`
+                            <button class="cirular" style="background-color:red;color: white;">
+                                <span onclick="doneTask(${index})" class="material-symbols-outlined">                               
+                                    cancel
+                                </span>   
+                                </button>
+                        ` : `
+                            <button class="cirular" style="background-color:red;color: white;">
+                            <span onclick="doneTask(${index})" class="material-symbols-outlined">
+                                check
+                            </span>   
+                            </button>
+                        `}
+                        
+
+                        <button class="cirular" style="background-color: green;color: white;">
+                            <span onclick="deleteTask(${index})" class="material-symbols-outlined">
+                                delete
+                            </span>
+                        </button>
+
+                        <button class="cirular" style="background-color: chocolate;color: white;">
+                            <span onclick="upoateTask(${index})" class="material-symbols-outlined">
+                                edit
+                            </span>
+                            </button>
+                        
+                    </div>
+                    <!--//TASK ACTION// -->
+
+                 </div>
+                
+                 `
+index++
+
+}
+
+
+}
+
+
+//عدليه لشي احسن
+document.getElementById("addNew").addEventListener("click",function(){
+    console.log("click already")
+    const Etitle = prompt("Enter task title:");
+    let Now= new Date()
+    let Edate=Now.getDate()+"/"+(Now.getMonth()+1)+"/"+Now.getFullYear()
+    
+    //const Edate = prompt("Enter task date:");
+
+    tasks.push({title:Etitle, date:Edate, isDone:false})
+    fillTasksOnThePage()
+})
+
+
+function deleteTask(index){
+    var confirmation = confirm("Do you want to delete: " + tasks[index].title + " ?")
+
+    if(confirmation){
+    tasks.splice(index,1);
+    fillTasksOnThePage();
+    }
+}
+
+function upoateTask(index){
+    console.log(index)
+    const newTitle=prompt("Enter the new title :",tasks[index].title)
+
+    tasks[index].title = newTitle
+    fillTasksOnThePage()
+}
+
+function doneTask(index){
+    console.log(index)
+
+    if(!tasks[index].isDone){
+        tasks[index].isDone=true
+        showGoodJob()
+    }else{
+        tasks[index].isDone=false
+        
+    }
+
+    //alert("GOOD JOBE")
+
+    
+
+    //tasks.splice(index,1)
+    fillTasksOnThePage()
+
+}
+
+
+function showGoodJob() {
+    const popup = document.createElement("div");
+    popup.textContent = "🎉 GOOD JOB! 🎉";
+
+    // ستايل سريع
+    popup.style.position = "fixed";
+    popup.style.top = "20%";
+    popup.style.left = "50%";
+    popup.style.transform = "translateX(-50%)";
+    popup.style.backgroundColor = "gold";
+    popup.style.color = "black";
+    popup.style.fontSize = "30px";
+    popup.style.fontWeight = "bold";
+    popup.style.padding = "20px 40px";
+    popup.style.borderRadius = "10px";
+    popup.style.boxShadow = "0 5px 15px rgba(0,0,0,0.3)";
+    popup.style.zIndex = "1000";
+    popup.style.opacity = "0";
+    popup.style.transition = "opacity 0.5s, transform 0.5s";
+
+    document.body.appendChild(popup);
+
+    // تظهر مع animation
+    requestAnimationFrame(() => {
+        popup.style.opacity = "1";
+        popup.style.transform = "translateX(-50%) translateY(-20px)";
+    });
+
+    // تختفي بعد 2 ثانية
+    setTimeout(() => {
+        popup.style.opacity = "0";
+        popup.style.transform = "translateX(-50%) translateY(-50px)";
+        setTimeout(() => popup.remove(), 500); // إزالة العنصر بعد الفيد
+    }, 2000);
+}
+
+
+
+
+
+
+
 
 </script>
 </html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+    button{
+        border:none;
+        font-size:20px;
+        box-shadow: 0px 3px 5px rgba(168,168,168,0.3);
+
+
+    }
+    button.cirular{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+
+
+
+    }
+    
+
+    .tasks-table{
+        background-color: rgb(206, 206, 206);
+        width: 70%;
+        /*height: 500px;*/
+        margin-top: 130px;
+        
+
+
+    }
+    
+
+    .task{
+        display: flex;
+        background-color: rgb(241, 243, 244);
+        padding: 40px;
+        border-bottom: solid black 1px;
+        transition: box-shadow 0.2s;
+        
+    }
+
+    .task:hover{
+        box-shadow: 0px 3px 15px rgba(97,97,97,0.843);
+
+    }
+    
+    body{
+        background-color: rgb(153, 107, 196);
+    }
+
+    </style>
+</head>
+
+
+
+
+
+<body>
+    <div style="direction: rtl;">
+        <!---CENTER DIV-->
+        <div style="align-items: center; display: flex; justify-content: center; ">
+
+
+        <!---TASKS TABLE-->
+        <div class="tasks-table">
+
+
+            <!-- HEADER-->
+            <div style="width: 100%; text-align: center; background: rebeccapurple; color: white; padding-top: 8px;padding-bottom: 8px;">
+                <h1 style="display: inline;"> مهامي</h1>
+                <button class="cirular" style="float: right; background: white; margin-right:10px;">  
+                    add 
+                 </button>
+
+            </div>
+            <!--// HEADER//-->
+
+            <!-- TASKS -->
+             <div class="tasks" style="padding: 20px;">
+                <!-- TASK -->
+                 <div class="task">
+                    <!--TASK INFO -->
+                    <div style="width: 70%;">
+                        <h2> ww</h2>
+                        <div>
+                            <span>10/10/2004</span>
+                        </div>
+
+                    </div>
+                    <!--//TASK INFO// -->   
+
+                    <!--TASK ACTION -->
+                    <div  style= "display:flex; justify-content: space-between;align-items: center; width: 20%;">
+                        <button class="cirular" style="background-color:red;color: white;">d</button>
+                        <button class="cirular" style="background-color: green;color: white;">C</button>
+                        <button class="cirular" style="background-color: chocolate;color: white;">E</button>
+                        
+                    </div>
+                    <!--//TASK ACTION// -->
+
+                 </div>
+                <!-- // TASK // -->
+
+              
+             </div>
+             <!-- // TASKS //  -->
+            
+        </div>
+         <!---//TASKS TABLE//-->
+
+
+   
+    
+    </div>
+     <!---//CENTER DIV//-->
+
+
+
+  </div>
+</body>
+
+
+<script>
+
+</script>
+</html>

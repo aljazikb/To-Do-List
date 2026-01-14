@@ -16,7 +16,7 @@
     
     <style>
 
-    button{
+   /* button{
         border:none;
         font-size:20px;
         box-shadow: 0px 3px 5px rgba(168,168,168,0.3);
@@ -29,7 +29,30 @@
         border-radius: 50%;
         line-height: 0;
 
+        display: flex;
+        align-items: center;  /* vertical centering */
+
+    button {
+        border: none;
+        font-size: 20px; /* icon size */
+        box-shadow: 0px 3px 5px rgba(168,168,168,0.3);
+        cursor: pointer;
     }
+
+    button.cirular {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        
+        display: flex;
+        align-items: center;    /* vertical centering */
+        justify-content: center; /* horizontal centering */
+        
+        padding: 0;             /* remove default padding */
+        background-color: gray;  /* default background, override inline if needed */
+        color: white;            /* icon color */
+    }
+
 
     .task-actions {
         display:flex;

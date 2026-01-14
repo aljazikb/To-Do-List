@@ -22,7 +22,6 @@
         box-shadow: 0px 3px 5px rgba(168,168,168,0.3);
         
 
-
     }
     button.cirular{
         width: 40px;
@@ -30,15 +29,24 @@
         border-radius: 50%;
         line-height: 0;
 
-
-
     }
+
+    .task-actions {
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 20%;
+        gap:10%;
+        
+    }
+
+
+   
     
 
     .tasks-table{
         background-color: rgb(206, 206, 206);
         width: 70%;
-        /*height: 500px;*/
         margin-top: 130px;
         
 
@@ -47,10 +55,9 @@
     
 
     .task{
-        display: flex;
-        background-color: rgb(241, 243, 244);
+        display: flex; background-color: rgb(241, 243, 244);
         padding: 40px;
-        border-bottom: solid black 1px;
+        border-bottom: solid black 1px; 
         transition: box-shadow 0.2s;
         
     }
@@ -75,6 +82,36 @@
         "ELSH" 2;
         /* // font import  //*/
     }
+
+    /* MOBILE */
+
+  @media (max-width: 600px) {
+    .task-actions {
+        gap: 6%;
+    }
+
+    .tasks-table {
+        width: 100%;
+        margin-top: 40%;
+    }
+     
+    }
+
+
+    @media(min-width: 601px){      
+        .tasks-table{
+            width: 100%;
+            
+
+        }
+    }
+
+    @media(min-width: 768px) and (max-width: 992px){
+    .tasks-table{
+        width: 100%;
+    
+    }
+}
 
 
     </style>
@@ -124,8 +161,8 @@
                     <!--//TASK INFO// -->   
 
                     <!--TASK ACTION -->
-                    <div  style= "display:flex; justify-content: space-between;align-items: center; width: 20%;">
-                        <button class="cirular" style="background-color:red;color: white;">
+                    <div>
+                        <button class="cirular" style="background-color:red;color:white;">
                         <span class="material-symbols-outlined">
                             check
                         </span>   
@@ -226,7 +263,7 @@ function fillTasksOnThePage(){
                     <!--//TASK INFO// -->   
 
                     <!--TASK ACTION -->
-                    <div  style= "display:flex; justify-content: space-between;align-items: center; width: 20%;">
+                    <div  class="task-actions">
                         
                         ${x.isDone?`
                             <button class="cirular" style="background-color:red;color: white;">
@@ -334,35 +371,38 @@ function showGoodJob() {
     const popup = document.createElement("div");
     popup.textContent = "🎉 GOOD JOB! 🎉";
 
-    // ستايل سريع
     popup.style.position = "fixed";
     popup.style.top = "20%";
     popup.style.left = "50%";
     popup.style.transform = "translateX(-50%)";
     popup.style.backgroundColor = "gold";
     popup.style.color = "black";
-    popup.style.fontSize = "30px";
+
+    /* responsive sizes */
+    popup.style.fontSize = "6vw";           // scales on mobile
     popup.style.fontWeight = "bold";
-    popup.style.padding = "20px 40px";
-    popup.style.borderRadius = "10px";
+    popup.style.padding = "4% 6%";
+    popup.style.maxWidth = "90%";           // prevents overflow
+    popup.style.textAlign = "center";
+
+    popup.style.borderRadius = "4%";
     popup.style.boxShadow = "0 5px 15px rgba(0,0,0,0.3)";
     popup.style.zIndex = "1000";
+
     popup.style.opacity = "0";
     popup.style.transition = "opacity 0.5s, transform 0.5s";
 
     document.body.appendChild(popup);
 
-    // تظهر مع animation
     requestAnimationFrame(() => {
         popup.style.opacity = "1";
-        popup.style.transform = "translateX(-50%) translateY(-20px)";
+        popup.style.transform = "translateX(-50%) translateY(-5%)";
     });
 
-    // تختفي بعد 2 ثانية
     setTimeout(() => {
         popup.style.opacity = "0";
-        popup.style.transform = "translateX(-50%) translateY(-50px)";
-        setTimeout(() => popup.remove(), 500); // إزالة العنصر بعد الفيد
+        popup.style.transform = "translateX(-50%) translateY(-10%)";
+        setTimeout(() => popup.remove(), 500);
     }, 2000);
 }
 

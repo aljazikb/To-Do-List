@@ -191,6 +191,32 @@ function showGoodJob() {
 }
 
 
+document.getElementById("input").addEventListener("change",function(){
+    const file= this.files[0]
+    const reader=new FileReader()
+
+    reader.onload=function(){
+        const base64 = reader.result;
+        document.body.style.backgroundImage= `url(${base64})`;
+
+        localStorage.setItem("background",base64)
+    }
+
+     reader.readAsDataURL(file);
+})
+
+
+
+
+window.addEventListener("load",function(){
+
+    const bg=this.localStorage.getItem("background")
+    if (bg) {
+        document.body.style.backgroundImage = `url(${bg})`;
+      
+    }
+
+})
 
 
 ///////////////// STORAGE FUNCTION/////////////////

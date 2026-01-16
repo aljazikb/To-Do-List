@@ -75,7 +75,11 @@
     }
     
     body{
-        background-color: rgb(153, 107, 196);
+        background-color: #1e1e1e; /* default color */
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+         min-height: 100vh;
         /*  font import */
         font-family: "Handjet", sans-serif;
         font-optical-sizing: auto;
@@ -85,6 +89,42 @@
         "ELGR" 1,
         "ELSH" 2;
         /* // font import  //*/
+    }
+
+
+   label {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 160px;
+        padding: 12px 16px;
+
+        background: linear-gradient(135deg, #b8d42f, #8fbf1f);
+        color: #020101;
+        font-weight: 600;
+        font-size: 14px;
+
+        border-radius: 30px;
+        cursor: pointer;
+
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        transition: all 0.3s ease;  }
+
+    label:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+    }
+
+    label:active {
+    transform: scale(0.97);
+    }
+    input{
+        display: none;
     }
 
     /* MOBILE */
@@ -123,9 +163,13 @@
 
 <body>
     <div style="direction: rtl;">
+        <!-- BACKGROUND CHANGE -->
+        <label for="input" >update image</label>
+        <input id="input" type="file" accept="image/*">
+
         <!---CENTER DIV-->
         <div style="align-items: center; display: flex; justify-content: center; ">
-
+        
 
         <!---TASKS TABLE-->
         <div class="tasks-table">
